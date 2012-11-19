@@ -23,7 +23,7 @@ public class SpaceInvaderView extends View {
 
 	private Paint paint; // Style pour le texte	
 	private String text; // texte à afficher
-	private Object alien;
+	private Bitmap alien;
 	
 
 
@@ -66,6 +66,7 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "Texte";
+		alien=loadImage(R.drawable.alien1);
 		
 	}
 
