@@ -11,6 +11,8 @@ public abstract class Sprite {
 	protected float x;
 	protected float y;
 	protected Paint paint;
+	
+	
 
 	public Sprite(Bitmap bitmap,float x,float y) {
 		this.bitmap = bitmap;
