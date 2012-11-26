@@ -2,10 +2,6 @@ package fr.dubois.space.invader;
 
 
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 
 
@@ -14,16 +10,11 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class SpaceInvaderView extends View {
@@ -34,6 +25,8 @@ public class SpaceInvaderView extends View {
 
 	private Paint paint; // Style pour le texte	
 	private String text; // texte à afficher
+	private Bitmap alien;
+	
 
 
 	public SpaceInvaderView(Context context) {
@@ -50,7 +43,20 @@ public class SpaceInvaderView extends View {
 		super(context, attrs);
 		init();
 	}
-
+	
+	public Bitmap loadImage(int key){
+		
+		Resources r = this.getResources();
+		Drawable drawable =r.getDrawable(key);
+		int x = drawable.getIntrinsicHeight();
+		int y = drawable.getIntrinsicWidth();
+		Bitmap bitmap = Bitmap.createBitmap(x,y, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0,x,y);
+        drawable.draw(canvas);
+        
+		return bitmap;
+	}
 
 	
 
@@ -62,7 +68,9 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "Texte";
-		String update = "update";
+
+		alien=loadImage(R.drawable.alien1);
+
 	}
 
 	 
@@ -131,5 +139,5 @@ mRedrawHandler.sleep(40 );
 		int y = computeSize(heightMeasureSpec,TARGET_HEIGHT);
 		this.setMeasuredDimension(x,y);
 	}
-
+		
 }
