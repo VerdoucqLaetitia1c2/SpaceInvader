@@ -3,6 +3,8 @@ package fr.dubois.space.invader;
 
 
 
+
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -66,18 +68,48 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "Texte";
+
 		alien=loadImage(R.drawable.alien1);
-		
+
 	}
 
+	 
 
+public Bitmap Loadimage(int key){
+	
+	  Resources r = this.getContext().getResources();
+	  r.getDrawable(R.drawable.alien1); r.getDrawable(R.drawable.ic_launcher);
+	  r.getDrawable(R.drawable.missile); r.getDrawable(R.drawable.missile2);
+	  r.getDrawable(R.drawable.ship);
+	
+	return null; 
+}
 
+private RefreshHandler mRedrawHandler = new RefreshHandler();
+private Object update;
 
+class RefreshHandler extends Handler {
 
+    @Override
+    public void handleMessage(Message msg) {
+        SpaceInvaderView.this.update();
+        SpaceInvaderView.this.invalidate();
+    }
 
+    public void sleep(long delayMillis) {
+    	this.removeMessages(0);
+        sendMessageDelayed(obtainMessage(0), delayMillis);
+    }
+};
 
+public void update() {
+	// TODO Auto-generated method stub
+ long mMoveDelay;
+mRedrawHandler.sleep(40 );
 
-	@Override
+        }
+
+@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		canvas.drawRGB(0, 0, 0);
@@ -86,6 +118,7 @@ public class SpaceInvaderView extends View {
 			canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);
 		}
 	}
+
 
 
 	private int computeSize(int spec,int def){
