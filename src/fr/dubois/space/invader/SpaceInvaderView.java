@@ -15,6 +15,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -115,10 +116,23 @@ mRedrawHandler.sleep(40 );
 		canvas.drawRGB(0, 0, 0);
 		canvas.drawRect(0, 0, TARGET_WIDTH-1, TARGET_HEIGHT-1, paint);
 		if (text != null){
-			canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);
+		canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);
 		}
+		
 	}
 
+protected void onSizeChanged (int w, int h, int oldw, int oldh)
+{
+        if ((w == oldw) && (h == oldh))
+        {
+                /* Nothing to do */
+                return;
+                }
+         /* Save the new view dimensions */
+        int widthMeasureSpec = w;
+        int heightMeasureSpec=h;
+        int StackSpacing = widthMeasureSpec/100;
+}
 
 
 	private int computeSize(int spec,int def){
