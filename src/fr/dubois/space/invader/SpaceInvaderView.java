@@ -14,6 +14,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -106,8 +107,7 @@ public void update() {
 	// TODO Auto-generated method stub
  long mMoveDelay;
 mRedrawHandler.sleep(40 );
-
-        }
+ }
 
 @Override
 	protected void onDraw(Canvas canvas) {
