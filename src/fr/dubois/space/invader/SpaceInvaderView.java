@@ -70,7 +70,7 @@ public class SpaceInvaderView extends View {
 		Bitmap alien= loadImage (R.drawable.alien1);
 		Bitmap ship= loadImage (R.drawable.ship);
 		this.alien =new Alien(alien, 0, 0);
-		this.ship =new Ship (ship, 100, 500);
+		this.ship =new Ship (ship, 200, 500);
 		
 	}
 
