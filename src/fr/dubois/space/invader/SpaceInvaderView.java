@@ -23,7 +23,8 @@ public class SpaceInvaderView extends View {
 
 	private Paint paint; // Style pour le texte	
 	private String text; // texte à afficher
-	private Bitmap alien;
+	private Alien alien;
+	private Ship ship;
 	
 
 
@@ -66,7 +67,10 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "Texte";
-		alien=loadImage(R.drawable.alien1);
+		Bitmap alien= loadImage (R.drawable.alien1);
+		Bitmap ship= loadImage (R.drawable.ship);
+		this.alien =new Alien(alien, 0, 0);
+		this.ship =new Ship (ship, 100, 500);
 		
 	}
 
@@ -79,12 +83,17 @@ public class SpaceInvaderView extends View {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
+		
 		super.onDraw(canvas);
 		canvas.drawRGB(0, 0, 0);
 		canvas.drawRect(0, 0, TARGET_WIDTH-1, TARGET_HEIGHT-1, paint);
+		
 		if (text != null){
 			canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);
+			
 		}
+		alien.draw(canvas);
+		ship.draw(canvas);
 	}
 
 
